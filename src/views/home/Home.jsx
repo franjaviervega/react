@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 import Card from './../../components/card/Card';
+import Boton from '../../components/boton';
+
+import { getAll } from '../../services/hero.service';
+import './Home.css';
 
 /**
  * Componente basado en clase, utilizado como vista en una aplicacion
@@ -9,14 +13,16 @@ import Card from './../../components/card/Card';
  */
 class Home extends Component {
 
-    constructor(props) {
-        super(props);
+    constructor(props) {  //PARA QUE SE USA EL CONSTRUCTOR???
+        super(props);     //ESTA SENTENCIA SIEMPRE DEBE IR????
+
         this.state = {
             username: 'hola',
             password: '*****',
             tarea: '',
-            lista: [],
+            lista: ["PRIMERA TAREA"],
         };
+
     }
 
     /**
@@ -43,25 +49,40 @@ class Home extends Component {
     }
 
     render() {
+        const { boton} = this.props;
         const { parametroEjemplo } = this.props;
+        const { altura } = this.props;
         const { username, password, lista, tarea } = this.state;
         return (
             <div>
-                <div>{parametroEjemplo}</div>
-                <Card title="Titulo" footer="El pie">
+                <div><h5>Titulo definido en app.js: {parametroEjemplo}</h5></div>
+                <div><h3>La altura es: {altura}</h3></div>
+                <Card title="Titulo" footer="El pie" ><br></br>
+
                     <input value={username} onChange={this.handleOnChange} name="username" />
                     <input value={password} onChange={this.handleOnChange} name="password" />
                     <input value={tarea} onChange={this.handleOnChange} name="tarea" />
-                    <button onClick={this.handleAddTask}>
-                        Add
+
+
+                    <br></br><button onClick={this.handleAddTask}>
+                        AGREGAR TAREA
                     </button>
-                    {username} - {password}
+
+                    <br></br>primera username: {username}
+                    <br></br>Segunda  pass:  {password}
 
                     {lista.map((e, i) => (<div key={i}>{e}</div>))}
+
                 </Card>
-            </div >
+
+                <Boton title="titulo en render de home">
+                    <input type="text"></input>
+                </Boton>
+            </div>  
         );
     }
 }
 
 export default Home;
+
+//{lista.map((e, i) => (<div key={i}>{e}</div>))}

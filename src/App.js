@@ -1,11 +1,14 @@
 import React from 'react';
 import './App.css';
 import Home from './views/home/Home';
+import List from './views/list/List';
+import Desafio1 from './views/desafio1/Desafio1';
 
 function App() {
   return (
     <div className="App">
-      <Home parametroEjemplo="Una propiedad de tipo string" />
+      
+      <Desafio1/> 
     </div>
   );
 }
@@ -36,4 +39,12 @@ funcion flecha refactorizada
 [1,2,3,4,5].map(e => ({ numero: e }))
 */
 
-
+/**
+ * <Home
+        parametroEjemplo="Una propiedad de tipo string"
+        nombre = "Clara"
+        altura="3 metros"
+        peso = "4 kilos"
+        edad = "30 años"
+      />
+ */

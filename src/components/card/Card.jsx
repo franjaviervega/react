@@ -1,5 +1,6 @@
 import React from 'react';
 import './Card.css';
+import Boton from '../boton'; 
 
 /**
  * Componente presentacional de tipo funcional para desplegar un card
@@ -12,12 +13,18 @@ import './Card.css';
  * @param {JSX.Element} props.children - contenido JXS de un card
  * @returns {JSX.Element}
  */
-const Card = ({ title, footer, children }) => (
+const Card = ({ title, footer, children, propiedadtest }) => (
     <div className="card">
-        <div className="card__header">{title}</div>
-        <div className="card__content">{children}</div>
-        <div className="card__footer">{footer}</div>
+        <div className="card__header">0{title} </div>  
+        <div className="card__content">1{children} cuerpo de CARDaaa</div>
+        <div className="card__footer">2{footer}</div>
+        <div>{propiedadtest}</div>
+    
+        <Boton></Boton>
     </div>
+
+    
+        
 );
 
 export default Card;

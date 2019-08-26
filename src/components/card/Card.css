@@ -1,12 +1,17 @@
 .card {
     border-radius: 5px;
-    border: solid red 1px;
+    border: red 5px dashed;
+    border-style: double
 }
 
 .card .card__header {
     background: blue;
 }
 
-.card .card__content {}
+.card .card__content {
+    background-color: blueviolet
+}
 
-.card .card__footer {}
+.card .card__footer {
+    background-color: aquamarine
+}
