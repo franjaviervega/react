@@ -3,6 +3,10 @@ import './App.css';
 import Home from './views/home/Home';
 import List from './views/list/List';
 import Desafio1 from './views/desafio1/Desafio1';
+import Desafio2 from './views/desafio2/Desafio2';
+import Desafio3 from './views/desafio3/Desafio3';
+import Cliente from './components/clientes/Cliente'
+
 
 function App() {
   return (

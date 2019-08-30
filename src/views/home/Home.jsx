@@ -5,6 +5,7 @@ import Boton from '../../components/boton';
 import { getAll } from '../../services/hero.service';
 import './Home.css';
 
+
 /**
  * Componente basado en clase, utilizado como vista en una aplicacion
  * 
@@ -13,14 +14,14 @@ import './Home.css';
  */
 class Home extends Component {
 
-    constructor(props) {  //PARA QUE SE USA EL CONSTRUCTOR???
-        super(props);     //ESTA SENTENCIA SIEMPRE DEBE IR????
+    constructor(props) {  //PARA QUE SE USA EL CONSTRUCTOR??? para definir propiedades 
+        super(props);     //ESTA SENTENCIA SIEMPRE DEBE IR???? si es para pasarle informacion al padre
 
         this.state = {
             username: 'hola',
             password: '*****',
             tarea: '',
-            lista: ["PRIMERA TAREA"],
+            lista: ["PRIMERA TAREA"], 
         };
 
     }
