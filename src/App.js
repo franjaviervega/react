@@ -1,7 +1,6 @@
 import React from 'react';
 import './App.css';
 
-import { MyProvider } from './components/MyContext';   //constante que viene desde micontext  MyProvider y UserConsumer
 import Context from './context/Contex'  //CONTEXT desafio3
 
 
