@@ -16,6 +16,8 @@ import Th from './../../components/table/Th';
 import Tr from './../../components/table/Tr';
 import Tbody from './../../components/table/Tbody';
 
+import Texto from './../../components/texto/Texto'
+
 /**
  * Componente primer desafio clase React
  * @version 1.0
@@ -28,8 +30,13 @@ class Desafio2 extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            typeRing:'',
+            typeRing: '',
             stateRing: false,
+
+            btnring: "btn btn-primary",
+            btnkill: "btn btn-danger",
+            ring: true,
+            estilo: "kill",
 
             botonAnillo: "ANILLO",
             searchImput: '',
@@ -41,18 +48,32 @@ class Desafio2 extends Component {
         };
     }
 
-    handleOnSelect = (event) => {
+    handleOnSelect = e => {
+        //handleOnSelect = event => {
         /*const { name, value } = event.target;  //DIFERENCIAS ENTRE SET Y STATE Y TARGET
         this.setState({ [name]: value });
         this.setState({ searchImput: value });
         */
-
-        alert(event.name);
+        const { lista } = this.state;
+        const newdata = lista.filter(r => r !== e);
+        this.setState({ lista: newdata, ring: false });
+        alert(e.name + " Desaparecerá de la lista");
     }
+
+    handleKill = e => {
+        alert(e.name + " Muere");
+        const { lista } = this.state;
+        const datakill = e;
+        datakill["kill"] = true;
+        console.log(datakill);
+        const newdata = lista.filter(r => r !== e);
+        newdata.push(datakill);
+        this.setState({ lista: newdata });
+    };
 
 
     render() {
-        const { lista, searchImput, textImput, anillo, kill, typeRing, stateRing,botonAnillo } = this.state;
+        const { lista, searchImput, textImput, anillo, kill, typeRing, stateRing, botonAnillo, ring } = this.state;
         return (
             <Content className="index">
                 <h2>Fellowship of the Ring</h2>
@@ -72,27 +93,27 @@ class Desafio2 extends Component {
                             </Tr>
                         </Thead>
                         <Tbody>
-                            {lista.map((element) => (
-                                <Tr className="character-row" key={element.id}>
-                                    <Td>
-                                        {this.state.count} - 
-                                        {element.name}
-                                    </Td>
-                                    <Td>{element.race}</Td>
-                                    <Td>{element.age}</Td>
-                                    <Td>{element.weapon}</Td>
+                            {lista.map((element, i) => (
+                                <Tr key={i}>
+                                    {element.kill ? 
+                                    <Td> <Texto > {element.name} </Texto></Td> : <Td> {element.name} </Td>
+                                    }
+                                    <Td> {element.kill ? <Texto> {element.race}   </Texto> : element.race}   </Td>
+                                    <Td> {element.kill ? <Texto> {element.age}    </Texto> : element.age}    </Td>
+                                    <Td> {element.kill ? <Texto> {element.weapon} </Texto> : element.weapon} </Td>
+                                    
                                     <Td>
                                         <Content className="controls">
                                             <Content>
-                                                <button value={kill} name="kill" onClick={this.handleOnSelect}>
-                                                    ☠ Kill
-                                                </button>
+                                                <Button title="☠ Kill" estilo={this.state.btnkill} value={kill} name="kill" event={() => (this.handleKill(element))}>
+                                                </Button>
+
                                             </Content>
                                             <Content >
-                                                <Button title="💍 Use Ring" value={anillo} name="anillo" event={()=> (this.handleOnSelect(element))}>
-                                                    
-                                                </Button>
-                                                
+                                                {ring ?
+                                                    <Button estilo={this.state.btnring} title="💍 Use Ring" value={anillo} name="anillo" event={() => (this.handleOnSelect(element))}>
+                                                    </Button>
+                                                    : ""}
                                             </Content>
                                         </Content>
                                     </Td>
@@ -110,4 +131,11 @@ class Desafio2 extends Component {
 export default Desafio2;
 
 //<Button title={'Use Ring'} type={typeRing} event={()=> (this.handleOnSelect(e))} state={stateRing}></Button>
-//HIDROLOTIO CORPORAL SENSITIVE DISPENSADOR AIRLESS 200 ML (GLICERINA POLIDOCANIL)
+
+/**
+ *
+*       <Td>{element.name}</Td>
+        <Td>{element.race}</Td>
+        <Td>{element.age}</Td>
+        <Td>{element.weapon}</Td>
+ */

@@ -4,4 +4,10 @@ const Content = (props) => (
     <div className={props.className}>{props.children}</div>
 );
 
-export default Content;
+export default Content; 
+
+/**
+ * 
+ * impor react from 
+ * 
+ */
