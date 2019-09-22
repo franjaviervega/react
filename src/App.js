@@ -85,7 +85,6 @@ class App extends React.Component {
         <AddSuperHero
           onAddNewHero={this.addNewHeroToList}
         />
-
       </Context.Provider>
 
 
