@@ -74,7 +74,6 @@ class App extends React.Component {
   render() {
     return (
       <Context.Provider value={this.state.listaSuper}>
-
         <ListSuperHero
           onhandleOnSelect={this.handleOnSelect}
           onRemoveHero={this.removeHeroFromList}
